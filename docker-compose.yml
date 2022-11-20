@@ -37,7 +37,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - postgres
+      - web
     restart: always
 
   pgadmin:
@@ -52,15 +52,17 @@ services:
     ports:
       - "${PGADMIN_PORT:-5050}:80"
     networks:
-      - postgres
+      - web
     restart: always
     depends_on:
       - postgres
 
 networks:
-  postgres:
+  web:
     driver: bridge
 
 volumes:
+  gofiber:
+  frontend:
   postgres:
   pgadmin:
