@@ -19,7 +19,7 @@ services:
     build:
       context: ./frontend
     ports:
-      - "8080:8080"
+      - "8001:5173"
     volumes:
       # docker-compose run --service-ports frontend bash
       - ./frontend:/usr/src/app
