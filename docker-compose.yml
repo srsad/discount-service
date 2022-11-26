@@ -6,10 +6,12 @@ services:
     build:
       context: ./backend/app
     ports:
-      - "3000:3000"
+      - "3000:${FIBER_PORT:-3000}"
     volumes:
       # docker-compose run --service-ports gofiber bash
       - ./backend/app:/usr/src/app
+    env_file:
+      - .env
     depends_on:
       - postgres
 
