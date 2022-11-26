@@ -1,16 +1,25 @@
 # Описание
 
-1. `git clone https://github.com/srsad/discount-service.git`
-2. `docker-compose buid`, последующии запуски `docker-compose up`
-    1. `docker-compose up` запустит сервис postrges (+pgadmin) и `gofiber` - бэк.
-    2. для работы с fiber, надо выпонить `docker-compose run --service-ports gofiber bash` (мб подумать об отдельном запуске)
-    3. для работы на фронте, выполнить `docker-compose run --service-ports frontend bash`
+### Начало работы
+  1. `git clone https://github.com/srsad/discount-service.git`
+  2. создать файл `.env` в корне проекта и скопировать в него данные из `example.env`
+  3. `docker-compose buid`, **последующии запуски `docker-compose up -d`**
+      - `docker-compose up` запустит сервис postrges (+pgadmin) и `gofiber` - бэк.
+      - Для того чтоб попать в контейнер fiber `docker-compose run --service-ports gofiber bash`
+
+### Работа на фронте
+  Необходима nodejs версии `16.13.0` или выше. Рекуомендуется установить nvm для безболезненной смены ноды.
+  После установки: 
+  1. перейти в каталок `frontend`
+  2. npm i
+  3. npm run dev
+
 
 **TODO**
   - `+` добавить образы для go(fiber)
   - `+` nodejs(vue3)
-      - собрать базу для vue, проверить порты
-  - добавиьт описание к разворачиванию окружения (docker-compose buid || docker-compose up)
+      - `~` собрать базу для vue, проверить порты
+  - `+` добавиьт описание к разворачиванию окружения (docker-compose buid || docker-compose up)
   - разобраться с pgadmin
   - 
   - ...
@@ -22,10 +31,11 @@
   - ...
 
 **Vue**
-  - подключить TS
-  - настройки линтера
-  - выборать библиотеку компонентов
-  - проработать архитектуру проекта (учесть composition api + pinia (нужна/нет))
-  - создать дэмо страницу/страницы
+  - `+` подключить TS
+  - `+` настройки линтера
+  - `+` выборать библиотеку компонентов
+  - `+` проработать архитектуру проекта (учесть composition api + pinia (нужна/нет)) - нужна
+  - `+` создать дэмо страницу/страницы
+  - `+` подключить `tailwind`
   - 
   - ...
