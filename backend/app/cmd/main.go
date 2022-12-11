@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/gofiber/fiber/v2"
+	"github.com/srsad/discount-service/internal/app"
 	parser "github.com/srsad/discount-service/services/parsers"
 )
 
@@ -13,11 +13,5 @@ func main() {
     parser.Parse5Ka()
 	}
 
-	app := fiber.New()
-
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello world!")
-	})
-
-	app.Listen(":3000")
+	app.Run()
 }
