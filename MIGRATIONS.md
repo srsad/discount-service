@@ -1,4 +1,5 @@
 # Миграции
+Для миграций используется [github.com/golang-migrate/migrate](https://github.com/golang-migrate/migrate)
 
 #### Создание миграции
 ```bash
