@@ -8,10 +8,13 @@ start-dev:
 migrate-create:
 	migrate create -ext sql -dir migrations -seq $(table)
 
-# make migrate-up
 migrate-up:
 	migrate -database postgres://root:root@postgres:5432/DS?sslmode=disable -path ./migrations up ${v}
 
 migrate-down:
 	migrate -database postgres://root:root@postgres:5432/DS?sslmode=disable -path ./migrations down ${a}
+
+# парсинг из всех источниов
+parse:
+	go run ./cmd/parsers/
 
