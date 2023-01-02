@@ -77,6 +77,7 @@ func ParseAdresesX5() {
 	targets := FiveAddressResponse{}
 	_ = json.Unmarshal([]byte(validJson), &targets)
 
+	// возвращать targets.Data.Features
 	for _, value := range targets.Data.Features {
 		fmt.Println("value", value)
 	}

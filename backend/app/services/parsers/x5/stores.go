@@ -76,6 +76,7 @@ func ParseStoreX5(args ...string) {
 	targets := FiveResponse{}
 	_ = json.Unmarshal([]byte(responseJson), &targets)
 
+	// возвращать targets.Results если targets.Next == ""
 	for _, value := range targets.Results {
 		fmt.Println("value", value)
 	}
