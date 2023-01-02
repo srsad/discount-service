@@ -74,8 +74,6 @@ func ParseAdresesX5() {
 	jsonString := regex.FindStringSubmatch(responseJson)
 	validJson := jsonString[1]
 
-	fmt.Println("ParseAdresesX5 validJson", validJson)
-
 	targets := FiveAddressResponse{}
 	_ = json.Unmarshal([]byte(validJson), &targets)
 
