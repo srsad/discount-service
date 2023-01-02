@@ -15,6 +15,11 @@ migrate-down:
 	migrate -database postgres://root:root@postgres:5432/DS?sslmode=disable -path ./migrations down ${a}
 
 # парсинг из всех источниов
-parse:
-	go run ./cmd/parsers/
+# make parse-adreses
+parse-adreses:
+	go run ./cmd/parsers/adreses/main.go
+
+# make parse-stores
+parse-stores:
+	go run ./cmd/parsers/stores/main.go
 
