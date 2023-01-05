@@ -1,15 +1,7 @@
 package main
 
-import (
-	"github.com/gofiber/fiber/v2"
-)
+import "github.com/srsad/discount-service/internal/app"
 
 func main() {
-	app := fiber.New()
-
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello world!")
-	})
-
-	app.Listen(":3000")
+	app.Run()
 }
