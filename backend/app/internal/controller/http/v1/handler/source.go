@@ -23,11 +23,24 @@ func GetAllSource(c *fiber.Ctx) error {
 }
 
 func GetByIdSource(c *fiber.Ctx) error {
+	db := database.DB
+	id := c.Params("id")
+
+	var source models.Sources
+	db.First(&source, id)
+
+	if source.Name == "" {
+		return c.Status(404).JSON(fiber.Map{
+			"status":  types.ERROR,
+			"message": "Не удалось найти источник с id" + id,
+			"data":    nil,
+		})
+	}
 
 	return c.JSON(fiber.Map{
 		"status":  types.SUCCESS,
 		"message": "",
-		"data":    nil,
+		"data":    source,
 	})
 }
 
@@ -37,7 +50,7 @@ func CreateSource(c *fiber.Ctx) error {
 
 	if err := c.BodyParser(item); err != nil {
 		return c.Status(500).JSON(fiber.Map{
-			"status":  "error",
+			"status":  types.ERROR,
 			"message": "Ошибка при добавлении источника.",
 			"data":    err,
 		})
@@ -53,11 +66,37 @@ func CreateSource(c *fiber.Ctx) error {
 }
 
 func UpdateSource(c *fiber.Ctx) error {
+	db := database.DB
+	id := c.Params("id")
+
+	var source models.Sources
+	db.First(&source, id)
+
+	if source.Name == "" {
+		return c.Status(404).JSON(fiber.Map{
+			"status":  types.ERROR,
+			"message": "Не удалось найти источник с id" + id,
+			"data":    nil,
+		})
+	}
+
+	item := new(models.Sources)
+
+	// TODO: проверить что сюда прилетает
+	if err := c.BodyParser(item); err != nil {
+		return c.Status(500).JSON(fiber.Map{
+			"status":  types.ERROR,
+			"message": "Ошибка при обновлении источника.",
+			"data":    err,
+		})
+	}
+
+	db.Save(c.BodyParser(item))
 
 	return c.JSON(fiber.Map{
 		"status":  types.SUCCESS,
-		"message": "",
-		"data":    nil,
+		"message": "Источник успешно обновлен!",
+		"data":    source,
 	})
 }
 
