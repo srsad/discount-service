@@ -16,9 +16,12 @@
     "node": ">=16.13.0"
   },
   "dependencies": {
+    "axios": "^1.2.2",
     "pinia": "^2.0.23",
     "vue": "^3.2.41",
-    "vue-router": "^4.1.5"
+    "vue-final-modal": "^3.4.11",
+    "vue-router": "^4.1.5",
+    "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
@@ -34,6 +37,7 @@
     "cypress": "^10.10.0",
     "eslint": "^8.22.0",
     "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
     "eslint-plugin-vue": "^9.3.0",
     "jsdom": "^20.0.1",
     "npm-run-all": "^4.1.5",

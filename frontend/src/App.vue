@@ -5,28 +5,18 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header>
     <nav class="grid grid-cols-12 gap-4">
-      <div class="col-span-10">
-        logo
+      <div class="col-span-9">logo</div>
+      <div>
+        <RouterLink class="navbar-link" to="/"> Home </RouterLink>
       </div>
       <div>
-        <RouterLink
-          class="navbar-link"
-          to="/"
-        >
-          Home
-        </RouterLink>
+        <RouterLink class="navbar-link" to="/about"> About </RouterLink>
       </div>
       <div>
-        <RouterLink
-          class="navbar-link"
-          to="/about"
-        >
-          About
-        </RouterLink>
+        <RouterLink class="navbar-link" to="/source"> Source </RouterLink>
       </div>
     </nav>
   </header>
-
 
   <RouterView />
 </template>
