@@ -67,9 +67,20 @@ func CreateSource(c *fiber.Ctx) error {
 
 func UpdateSource(c *fiber.Ctx) error {
 	db := database.DB
-	id := c.Params("id")
+
+	item := new(models.Sources)
+
+	if err := c.BodyParser(item); err != nil {
+		return c.Status(500).JSON(fiber.Map{
+			"status":  types.ERROR,
+			"message": "Ошибка при обновлении источника.",
+			"data":    err,
+		})
+	}
 
 	var source models.Sources
+	id := c.Params("id")
+
 	db.First(&source, id)
 
 	if source.Name == "" {
@@ -80,23 +91,13 @@ func UpdateSource(c *fiber.Ctx) error {
 		})
 	}
 
-	item := new(models.Sources)
-
-	// TODO: проверить что сюда прилетает
-	if err := c.BodyParser(item); err != nil {
-		return c.Status(500).JSON(fiber.Map{
-			"status":  types.ERROR,
-			"message": "Ошибка при обновлении источника.",
-			"data":    err,
-		})
-	}
-
-	db.Save(c.BodyParser(item))
+	c.BodyParser(item)
+	db.Save(item)
 
 	return c.JSON(fiber.Map{
 		"status":  types.SUCCESS,
 		"message": "Источник успешно обновлен!",
-		"data":    source,
+		"data":    item,
 	})
 }
 
@@ -123,5 +124,3 @@ func RemoveSource(c *fiber.Ctx) error {
 		"data":    nil,
 	})
 }
-
-// var Source = SourceHandler{}

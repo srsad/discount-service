@@ -20,7 +20,7 @@ const {
         <label class="mb-4">
           <p class="text-sm font-semibold mb-2">Имя источника</p>
           <input
-            v-model="updateSourceItem.name"
+            v-model.trim="updateSourceItem.name"
             type="text"
             class="form-control"
             required
