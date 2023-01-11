@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS stores (
+CREATE TABLE IF NOT EXISTS sources (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) DEFAULT '',
   type store_types DEFAULT 'store',
